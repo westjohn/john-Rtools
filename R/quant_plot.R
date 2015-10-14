@@ -1,14 +1,17 @@
 #' A quantile plot function
 #'
 #' This function takes an atomic vector of numbers and
-#' creates a quantile plot of the data.
+#' creates a quantile plot of the data. This function requires
+#' GGally, ggplot2, reshape2 (probably)
+#'
 #' @param data An atomic vector of numbers
 #' @param ylabel Label for the quantity being plotted; defaults to "Quantity"
-#' @param breaks Vector of numeric vector of probabilities with values in [0,1] representing the quantile boundaries. CURRENTLY IGNORED
-#' @keywords quant_plot
+#' @param quantile Vector of numeric vector of probabilities with values in [0,1]
+#' representing the quantile boundaries. This defaults to quartiles, e.g.: seq(0,1,by=.25).
+#' @keywords quantile plot, quant_plot
 #' @export
 #' @examples
-#' quant_plot(data=x,ylabel="Height")
+#' quant_plot(data=df$height,ylabel="Height")
 
 
 #library(ggplot2)
@@ -20,7 +23,7 @@
 #library(GGally)
 
 #This creates a quartile plot of the data with lines at 25%, 50%, and 75%
-quant_plot <- function(d,ylabel="Quantity") {
+quant_plot <- function(d,ylabel="Quantity",quantile=seq(0,1,by=0.25)) {
     d <- sort(d)
     q <- data.frame(quantile(d))
     names(q)<-"breaks"

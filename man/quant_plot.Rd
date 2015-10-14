@@ -4,21 +4,25 @@
 \alias{quant_plot}
 \title{A quantile plot function}
 \usage{
-quant_plot(d, ylabel = "Quantity", breaks = seq(0, 1, 0.25))
+quant_plot(d, ylabel = "Quantity", quantile = seq(0, 1, by = 0.25))
 }
 \arguments{
 \item{ylabel}{Label for the quantity being plotted; defaults to "Quantity"}
 
-\item{breaks}{Vector of numeric vector of probabilities with values in [0,1] representing the quantile boundaries. CURRENTLY IGNORED}
+\item{quantile}{Vector of numeric vector of probabilities with values in [0,1]
+representing the quantile boundaries. This defaults to quartiles seq(0,1,by=.25).}
 
 \item{data}{An atomic vector of numbers}
 }
 \description{
 This function takes an atomic vector of numbers and
-creates a quantile plot of the data.
+creates a quantile plot of the data. This function requires
+GGally, ggplot2, reshape2 (probably)
 }
 \examples{
-quant_plot(data=x,ylabel="Height")
+quant_plot(data=df$height,ylabel="Height")
 }
+\keyword{plot,}
 \keyword{quant_plot}
+\keyword{quantile}
 
